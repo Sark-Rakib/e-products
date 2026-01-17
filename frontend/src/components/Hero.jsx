@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="bg-blue-500 text-white py-20 px-4 md:px-20 rounded-md relative">
+    <section className="bg-linear-60 from-blue-300 to-blue-200 text-white py-20 px-4 md:px-20 rounded-md relative">
       <div className="max-w-4xl mx-auto text-center md:text-left">
         {/* Headline */}
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Welcome to Community Blog
+          Welcome to E-Products Shop
         </h1>
 
         {/* Subtitle */}
@@ -15,8 +15,10 @@ export default function Hero() {
         </p>
 
         {/* CTA Button */}
-        <Link href="/blog">
-          <button className=" text-center bg-white text-gray-600 hover:bg-gray-200 rounded-md font-medium text-xl p-3">Start reading</button>
+        <Link href="/products">
+          <button className=" text-center bg-white text-gray-600 hover:bg-gray-200 rounded-md font-medium text-xl p-3">
+            Explore Products
+          </button>
         </Link>
       </div>
 

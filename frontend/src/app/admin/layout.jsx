@@ -8,7 +8,12 @@ import { useAuth } from "../../../context/AuthContext";
 
 // Icons (Unchanged)
 const DashboardIcon = () => (
-  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className="w-5 h-5 mr-3"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -19,7 +24,12 @@ const DashboardIcon = () => (
 );
 
 const LogoutIcon = () => (
-  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className="w-5 h-5 mr-3"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -48,7 +58,9 @@ export default function AdminLayout({ children }) {
       <div className="flex justify-center items-center h-screen bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500 mx-auto mb-3"></div>
-          <p className="text-lg text-gray-700 font-medium">Checking admin access...</p>
+          <p className="text-lg text-gray-700 font-medium">
+            Checking admin access...
+          </p>
         </div>
       </div>
     );
@@ -58,19 +70,20 @@ export default function AdminLayout({ children }) {
   if (isAdmin) {
     // Check if the current path is the root of the admin section
     // Assumes the admin index is at /admin or /admin
-    const isDashboardIndex = pathname === '/admin' || pathname === '/admin';
+    const isDashboardIndex = pathname === "/admin" || pathname === "/admin";
 
     return (
       <div className="flex bg-gray-100">
-
         {/* --- Sidebar (Desktop Only) --- */}
         <aside
           // h-screen and fixed prevents the sidebar from scrolling with the content
           className="hidden lg:flex w-72 h-screen bg-gray-800 flex-col shadow-xl fixed left-0 top-0 z-50"
         >
           {/* Sidebar Header/Branding */}
-          <div className="h-16 flex items-center justify-center bg-gray-900 flex-shrink-0">
-            <span className="text-white font-bold text-xl tracking-wide">Admin Panel</span>
+          <div className="h-16 flex items-center justify-center bg-gray-900 ">
+            <span className="text-white font-bold text-xl tracking-wide">
+              Admin Panel
+            </span>
           </div>
 
           {/* Main Navigation (Scrollable Area) */}
@@ -89,7 +102,7 @@ export default function AdminLayout({ children }) {
           </nav>
 
           {/* Footer/Logout Area */}
-          <div className="p-4 border-t border-gray-700 flex-shrink-0">
+          <div className="p-4 border-t border-gray-700">
             <button
               onClick={logout}
               className="flex items-center text-red-400 hover:text-red-300 transition text-sm font-medium"
@@ -106,7 +119,6 @@ export default function AdminLayout({ children }) {
           className="flex-1 lg:ml-72 flex flex-col min-h-screen"
         >
           <main className="flex-1 p-4 sm:p-8">
-
             {/* Mobile back navigation: Renders ONLY if NOT on the admin index page */}
             {!isDashboardIndex && (
               <div className="mb-4 lg:hidden">

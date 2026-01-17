@@ -1,21 +1,21 @@
 // /frontend/components/Toast.js
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 // Renders a single toast notification
 export default function Toast({ message, type, onClose }) {
-  let bgColor = '';
+  let bgColor = "";
 
   switch (type) {
-    case 'success':
-      bgColor = 'bg-green-500';
+    case "success":
+      bgColor = "bg-green-500";
       break;
-    case 'error':
-      bgColor = 'bg-red-500';
+    case "error":
+      bgColor = "bg-red-500";
       break;
     default:
-      bgColor = 'bg-gray-700';
+      bgColor = "bg-gray-700";
   }
 
   return (

@@ -1,8 +1,8 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
-import { AuthProvider } from '../../context/AuthContext';
-import { ToastProvider } from '../../context/ToastContext';
-import './globals.css';
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { AuthProvider } from "../../context/AuthContext";
+import { ToastProvider } from "../../context/ToastContext";
+import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (

@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-gray-800 text-white">
       <div className="w-11/12 mx-auto py-8 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h1 className="text-2xl font-bold mb-4">Community Blog</h1>
+          <h1 className="text-2xl font-bold mb-4">E-PRoducts</h1>
           <p className="text-gray-300">
             Crafting beautiful and informative blogs.
           </p>
@@ -83,7 +83,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center py-4 border-t border-gray-700 text-gray-400">
-        &copy; {new Date().getFullYear()} Community Blog. All rights reserved.
+        &copy; {new Date().getFullYear()} E-PRoducts. All rights reserved.
       </div>
     </footer>
   );

@@ -12,13 +12,13 @@ export default function Navbar() {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   // Logic to get user initial from email (e.g., "A")
-  const userInitial = user?.email ? user.email.charAt(0).toUpperCase() : '?';
+  const userInitial = user?.email ? user.email.charAt(0).toUpperCase() : "?";
 
   // Define public links
   const publicLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "All Blog Posts", href: "/blog" },
+    { name: "All Products", href: "/products" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -31,7 +31,7 @@ export default function Navbar() {
   const handleUserButtonClick = () => {
     // If opening user menu, ensure mobile menu is closed (prevents overlap)
     setMobileOpen(false);
-    setUserMenuOpen(prev => !prev);
+    setUserMenuOpen((prev) => !prev);
   };
 
   const handleLogout = () => {
@@ -39,16 +39,17 @@ export default function Navbar() {
     handleLinkClick(); // Close both menus
   };
 
-
   return (
     // Main Nav Container: Sticky, high Z-index, slight shadow, subtle border
     <nav className="sticky top-0 z-50 bg-white shadow-xl border-b border-gray-100">
       <div className=" mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
-
           {/* 1. Left - Logo */}
-          <Link href="/" className="text-3xl font-extrabold text-blue-500 hover:text-blue-800 transition tracking-tight">
-            Community Blog
+          <Link
+            href="/"
+            className="text-3xl font-extrabold text-blue-500 hover:text-blue-800 transition tracking-tight"
+          >
+            E-PRoducts
           </Link>
 
           {/* 2. Center - Desktop Links (Hidden on small screens) */}
@@ -69,7 +70,6 @@ export default function Navbar() {
 
           {/* 3. Right Side (Auth/User) */}
           <div className="flex items-center space-x-3">
-
             {/* Login button */}
             {!user && (
               <Link
@@ -87,17 +87,15 @@ export default function Navbar() {
                   onClick={handleUserButtonClick}
                   className="flex items-center space-x-2 rounded-full p-1 transition ring-2 ring-transparent hover:ring-blue-400 focus:outline-none focus:ring-blue-400"
                 >
-
                   <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center border-2 border-gray-200">
                     <span className="text-white font-bold text-lg">
                       {userInitial}
                     </span>
                   </div>
 
-
                   {/* Display Name/Email */}
                   <span className="hidden sm:inline text-sm font-medium text-gray-800">
-                    {user.displayName || user.email?.split('@')[0]}
+                    {user.displayName || user.email?.split("@")[0]}
                   </span>
                 </button>
 
