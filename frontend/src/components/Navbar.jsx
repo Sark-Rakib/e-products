@@ -2,11 +2,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useContext, useState } from "react";
+import { AuthContext } from "@/app/Context/AuthContext";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export default function Navbar() {
-  const { user, isAdmin, logout } = useAuth();
+  const { user, handleLogOut } = useContext(AuthContext);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    logout();
+    handleLogOut();
     handleLinkClick(); // Close both menus
   };
 
@@ -66,6 +67,17 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <div className="flex items-center space-x-3">
+              {/* add product button */}
+              {user && (
+                <Link
+                  href="/add"
+                  className="hidden sm:inline-block px-5 py-2.5 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-lg"
+                >
+                  Add Products
+                </Link>
+              )}
+            </div>
           </ul>
 
           {/* 3. Right Side (Auth/User) */}
@@ -101,41 +113,18 @@ export default function Navbar() {
 
                 {userMenuOpen && (
                   // User Dropdown: Absolute positioning, z-index for stacking, polished shadow
-                  <ul className="absolute right-0 mt-3 w-56 bg-white shadow-2xl rounded-xl border border-gray-100 py-2 text-sm z-40 origin-top-right transform scale-100 transition duration-150 ease-out">
+                  <ul className="absolute -right-5 mt-15 w-56 bg-white shadow-2xl rounded-xl border border-gray-100 py-2 text-sm z-40 origin-top-right transform scale-100 transition duration-150 ease-out">
                     <li className="px-4 py-2 font-bold text-gray-900 border-b mb-1 truncate">
                       {user.displayName || user.email}
                     </li>
 
-                    {isAdmin && (
-                      <>
-                        <li>
-                          <Link
-                            href="/admin"
-                            className="block px-4 py-2 text-blue-600 hover:bg-gray-100 rounded-md mx-2 transition"
-                            onClick={handleLinkClick}
-                          >
-                            📊 Admin panel
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/admin/blog/add"
-                            className="block px-4 py-2 text-blue-600 hover:bg-gray-100 rounded-md mx-2 transition"
-                            onClick={handleLinkClick}
-                          >
-                            ✍️ Write New Post
-                          </Link>
-                        </li>
-                        <hr className="my-1 border-gray-100" />
-                      </>
-                    )}
-
                     <li>
                       <button
                         onClick={handleLogout}
-                        className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 rounded-md mx-2 transition"
+                        className="w-full flex items-center text-left px-4 py-2 text-red-600 hover:bg-red-50 rounded-md  transition"
                       >
-                        🚪 Logout
+                        🚪
+                        <AiOutlineArrowLeft size={16} /> Logout
                       </button>
                     </li>
                   </ul>
@@ -188,6 +177,17 @@ export default function Navbar() {
                 </li>
               ))}
 
+              <div className="flex items-center space-x-3">
+                {/* add product button */}
+                {user && (
+                  <Link
+                    href="/add"
+                    className="ml-5 px-5 py-2.5 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-lg"
+                  >
+                    Add Products
+                  </Link>
+                )}
+              </div>
               {/* Conditional Mobile Auth Links */}
               {!user ? (
                 <li>
@@ -201,23 +201,14 @@ export default function Navbar() {
                 </li>
               ) : (
                 <>
-                  {isAdmin && (
-                    <li>
-                      <Link
-                        href="/admin"
-                        className="block px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 transition"
-                        onClick={handleLinkClick}
-                      >
-                        📊 Admin panel
-                      </Link>
-                    </li>
-                  )}
                   <li>
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-6 py-2 text-red-600 font-medium hover:bg-red-50 transition"
+                      className="flex items-center bg-red-300 ml-5 rounded text-left px-6 py-2 text-red-600 font-medium hover:bg-red-50 transition"
                     >
-                      🚪 Logout
+                      🚪
+                      <AiOutlineArrowLeft size={17} />
+                      Logout
                     </button>
                   </li>
                 </>

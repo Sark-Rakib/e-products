@@ -1,20 +1,19 @@
-import Footer from "@/components/Footer";
+"use client";
+
 import Navbar from "@/components/Navbar";
-import { AuthProvider } from "../../context/AuthContext";
-import { ToastProvider } from "../../context/ToastContext";
+import Footer from "@/components/Footer";
 import "./globals.css";
+import AuthProvider from "./Context/AuthProvider";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ToastProvider>
-          <AuthProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </AuthProvider>
-        </ToastProvider>
+        <AuthProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

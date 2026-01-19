@@ -44,26 +44,6 @@ export default function ProductListPage() {
         />
       </div>
 
-      {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredProducts.length === 0 && (
-          <p className="text-center col-span-full">No products found.</p>
-        )}
-
-        {filteredProducts.map((product) => (
-          <div key={product._id} className="p-4 border rounded shadow">
-            <h2 className="font-bold text-xl mb-2">
-              {product.name || "Unnamed Product"}
-            </h2>
-            <p className="text-gray-600">
-              {product.description || "No description"}
-            </p>
-            <p className="mt-2 font-semibold">
-              Price: ${product.price || "N/A"}
-            </p>
-          </div>
-        ))}
-      </div> */}
-
       <div className="my-15 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {filteredProducts.map((product) => (
           <div

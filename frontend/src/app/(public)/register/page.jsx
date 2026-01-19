@@ -1,40 +1,39 @@
 // /frontend/app/(public)/login/page.js
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { useAuth } from '../../../../context/AuthContext';
+import { AuthContext } from "@/app/Context/AuthContext";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const { register } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { handleRegisters } = useContext(AuthContext);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
+    router.push("/");
 
-    const success = await register(email, password);
-    if (!success) setError('Invalid email or password.');
+    const success = await handleRegisters(email, password);
+    if (!success) setError("Invalid email or password.");
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-neutral-900 px-4">
       <div className="w-full max-w-md bg-white dark:bg-neutral-800 shadow-xl rounded-xl p-8 border border-gray-200 dark:border-neutral-600">
-
         <h1 className="text-3xl font-semibold text-center text-neutral-900 dark:text-neutral-100 mb-6">
           Create Your Account
         </h1>
 
         {error && (
-          <p className="mb-4 text-sm text-red-500 text-center">
-            {error}
-          </p>
+          <p className="mb-4 text-sm text-red-500 text-center">{error}</p>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
-
           <div>
             <label className="block text-sm font-medium text-neutral-600 dark:text-neutral-300">
               Email
@@ -83,12 +82,11 @@ export default function LoginPage() {
           >
             Register
           </button>
-
         </form>
 
         {/* Signup link */}
         <p className="text-center text-sm text-neutral-500 dark:text-neutral-400 mt-6">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link
             href="/login"
             className="text-blue-500 dark:text-blue-400 hover:underline font-medium"
